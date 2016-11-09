@@ -2,15 +2,9 @@ library(data.table)
 setwd("C:/Users/Aayush - Carlson/Desktop/PA/")
 
 ## Movie Table
-x <- readLines("movies.txt")
-movies <- data.frame("movie_id"= numeric(0), "movie_title"= integer(0), "genre" = character(0))
-movies$Genre <- as.character(movies$Genre)
-for (i in 1:length(x)){
-  y <- strsplit(x[i],"::")
-  movies[i,1] <- y[[1]][1]
-  movies[i,2] <- y[[1]][2]
-  movies[i,3] = y[[1]][3]
-}
+lines = readLines ('movies.txt')
+lines <- gsub("::", "*", lines)
+movies = read.table(text=lines, sep="*", fill=TRUE, col.names = c('movie_id','movie_title','genre'))
 write.csv(movies,"movies.csv",row.names = FALSE)
 
 #User Table

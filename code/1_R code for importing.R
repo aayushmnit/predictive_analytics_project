@@ -3,8 +3,18 @@ setwd("C:/Users/Aayush - Carlson/Desktop/PA/")
 
 ## Movie Table
 lines = readLines ('movies.txt')
-lines <- gsub("::", "*", lines)
-movies = read.table(text=lines, sep="*", fill=TRUE, col.names = c('movie_id','movie_title','genre'))
+movies <- data.frame(movie_id = character(0), movie_title = character(0), genre = character(0))
+movies$movie_id <- as.character(movies$movie_id)
+movies$movie_title <- as.character(movies$movie_title)
+movies$genre <- as.character(movies$genre)
+
+for (i in 1:length(lines)){
+  y <- strsplit(lines[i],"::")
+  movies[i,"movie_id"] <- y[[1]][1]
+  movies[i,"movie_title"] <- y[[1]][2]
+  movies[i,"genre"] <- y[[1]][3]
+}
+
 write.csv(movies,"movies.csv",row.names = FALSE)
 
 #User Table

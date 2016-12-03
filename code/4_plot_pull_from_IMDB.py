@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 ia = IMDb()
 
-movies = pd.read_csv('C:/Users/Aayush - Carlson/Desktop/PA/movies.csv')
+movies = pd.read_csv('./output/movies.csv')
 movies['Plot'] = movies.apply(lambda _: '', axis=1)
 
 for i in range(len(movies.movie_id)):
@@ -17,4 +17,4 @@ for i in range(len(movies.movie_id)):
     except:
         pass
     
-pickle.dump(movies, open('C:/Users/Aayush - Carlson/Desktop/PA/movies.p', 'wb'))
+pickle.dump(movies, open('./output/movies.p', 'wb'))

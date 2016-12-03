@@ -1,6 +1,4 @@
-setwd("C:/Users/Aayush - Carlson/Desktop/PA/")
-
-movies <- read.csv("movies.csv")
+movies <- read.csv("./output/movies.csv")
 
 genre <- unique(as.character(movies$genre))
 
@@ -13,4 +11,4 @@ for (i in 1:length(genre)){
   movies[,genre[i]] <- as.integer(grepl(genre[i],movies$genre))
 }
 
-write.csv(movies,'movies_expanded.csv')
+write.csv(movies,'./output/movies_expanded.csv')

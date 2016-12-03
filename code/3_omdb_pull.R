@@ -2,9 +2,8 @@
 library(omdbapi)
 library(dplyr)
 library(stringr)
-setwd("C:/Users/Aayush - Carlson/Desktop/PA/")
 
-movies <- read.csv("movies.csv")
+movies <- read.csv("./output/movies.csv")
 movies$movie_id <- str_pad(movies$movie_id, 7, pad = "0")
 movies$imdb_id <- paste('tt',movies$movie_id,sep ="")
 
@@ -14,4 +13,4 @@ for (i in 1:nrow(movies)){
   print(i)
 }
 
-write.csv(movie_omdb,"movie_omdb.csv",row.names = FALSE)
+write.csv(movie_omdb,"./output/movie_omdb.csv",row.names = FALSE)
